@@ -4,7 +4,10 @@
       <% for (let post of posts) { %>
         <div class="col-md-4">
           <ul class="posts-list">
-            <li><h3><%= post.title %></h3></li>
+            <li>
+              <a href="/posts/<%= post.id %>">
+                <h3><%= post.title %></h3>
+              </a></li>
           </ul>
           <hr>
         </div>

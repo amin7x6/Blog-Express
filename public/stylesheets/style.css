@@ -5,7 +5,12 @@ body {
 }
 
 a {
-    color: #00B7FF;
+    color: #2980B9;
+}
+
+a:hover{
+  color: #A9CCE3;
+  text-decoration: none;
 }
 
 li {
