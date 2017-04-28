@@ -4,15 +4,20 @@
   <h1><%= post.title %></h1><hr>
   <h3><%= post.description %></h3><br>
   <p><strong>Created At :</strong> <%= post.createdAt %></p>
+    <div class="col-sm-5">
+      <div class="col-sm-2">
+      <a class="btn btn-sm btn-primary" href="/posts/<%= post.id %>/edit">Edit</a>
+    </div>
+    <div class="col-sm-2">
+      <form action="/posts/<%= post.id %>" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <input class="btn btn-sm btn-danger" type="submit" value="Delete"/>
+      </form>
+    </div>
+  </div><br><br>
 
-  <a href="/posts/<%= post.id %>/edit">Edit</a>
+    <hr><br>
 
-  <form action="/posts/<%= post.id %>" method="post">
-    <input type="hidden" name="_method" value="delete"/>
-    <input class="btn btn-sm btn-danger" type="submit" value="Delete"/>
-  </form>
-
-  <hr><br>
     <h2>Comments</h2>
     <form action="/posts/<%= post.id %>/comments" method="post">
         <div class="form-group">
