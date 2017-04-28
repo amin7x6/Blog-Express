@@ -14,4 +14,14 @@ router.post('/', function(req, res) {
     .then(function() { res.redirect(`/posts/${postId}`)});
   })
 
+  router.delete('/:id', function (req, res){
+  const id = req.params.id;
+  const postId = req.params.postId;
+
+  Comment
+    .findById(id)
+    .then(function (comment){ return comment.destroy()})
+    .then(function (){ res.redirect(`/posts/${postId}`)});
+})
+
 module.exports = router;

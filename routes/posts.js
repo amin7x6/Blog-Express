@@ -35,8 +35,36 @@ router.delete('/:id', function (req, res){
   Post
     .findById(id)
     .then(function (post){ return post.destroy()})
-    .then(function(){ res.redirect('/posts')})
+    .then(function(){ res.redirect('/posts') });
 })
+
+router.get('/:id/edit', function (req, res) {
+  const id = req.params.id;
+
+  Post
+    .findById(id)
+    .then(function (post) {
+      res.render('posts/edit', {post: post})
+    })
+})
+
+
+router.patch('/:id', function (req,res, next){
+  const id = req.params.id;
+
+  Post
+    .findById(id)
+    .then(function (post){
+      return post.update(
+        {title: req.body.title, description: req.body.description}
+      );
+    })
+    .then(function (post) {
+      res.redirect(`/posts/${id}`);
+    })
+    .catch(function (err) { next(err) })
+})
+
 
 router.get('/:id', function (req, res){
   const id = req.params.id
