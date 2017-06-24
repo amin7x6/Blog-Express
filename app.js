@@ -33,7 +33,6 @@ app.use(methodOverride(function (req, res) {
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/posts', posts);
